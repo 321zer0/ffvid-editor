@@ -141,5 +141,21 @@ namespace FFvid_Editor_Pro
         public int Bitrate { get; private set; }
 
         public List<Stream> Streams { get { return _streams;  } }
+		
+		public override string ToString()
+        {
+            string s = "File: " + this.Filename + "\n\n" +
+                       "Duration: " + this.Duration.ToString() + "\n" + 
+                       "Bitrate: " + this.Bitrate + " kbps";
+
+            s += "\n\n";
+
+            foreach (Stream stream in this.Streams)
+            {
+                s += stream.ToString() + "\n\n";
+            }
+
+            return s;
+        }
     }
 }
