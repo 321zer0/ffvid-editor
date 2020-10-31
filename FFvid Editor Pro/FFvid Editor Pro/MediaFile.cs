@@ -12,6 +12,13 @@ namespace FFvid_Editor_Pro
 
         public MediaFile(string filename)
         {
+			if (!File.Exists(filename))
+            {
+                MessageBox.Show("Error: The file '" + filename + "' could not be found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // TODO: throw FileNotFoundException
+                return;
+            }
+
             // TODO: check if FFmpeg exists, if not, we need to abort
 
             this.Filename = filename;
