@@ -54,6 +54,12 @@ namespace FFvid_Editor_Pro
             }
 
             string line = lineReceived.Data.Trim();
+			
+			if (line.Contains("Invalid data found when processing"))
+            {
+                MessageBox.Show("Error: The file '" + this.Filename + "' could not be processed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; // FIXME: There should be a way to notify if media probe was unsucessful
+            }
 
             if (line.StartsWith("Duration: "))
             {
