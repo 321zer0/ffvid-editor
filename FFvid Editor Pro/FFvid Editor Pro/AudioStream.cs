@@ -22,5 +22,35 @@ namespace FFvid_Editor_Pro
         public int SampleRate { get; set; }
         
         public string Channel { get; set; }
+
+        public int ChannelCount
+        { 
+            get
+            {
+                if (this.Channel == "mono")
+                {
+                    return 1;
+                }
+                else if (this.Channel == "stereo")
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Stream Type: " + this.Type + "\n" +
+                   "Index: " + this.Index.ToString() + "\n" +
+                   "Codec: " + this.Codec + "\n" +
+                   "Sample rate: " + this.SampleRate + " Hz" + "\n" +
+                   "Channel: " + this.Channel + "\n" +
+                   "Channel count: " + this.ChannelCount.ToString() + "\n" +
+                   "Bitrate: " + this.Bitrate + " kbps";
+        }
     }
 }
